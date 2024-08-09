@@ -6,7 +6,9 @@ ENV NODE_ENV=development
 
 WORKDIR /home/node/app
 
-RUN npm install -g npm@10.8.1
+RUN chmod -R u+rwx .
+
+RUN npm i -g npm@10.8.2
 
 RUN npm install -g @nestjs/cli
 
