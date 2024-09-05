@@ -14,7 +14,7 @@ import { EnviarEmailService } from './enviar-email.service';
 export class EnviarEmailController {
   private readonly logger = new Logger(EnviarEmailController.name);
 
-  constructor(private readonly enviarEmailService: EnviarEmailService) { }
+  constructor(private readonly enviarEmailService: EnviarEmailService) {}
 
   @MessagePattern('enviar-email', Transport.RMQ)
   async enviarEmail(

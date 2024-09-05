@@ -8,7 +8,7 @@ import { EnviarEmailDto } from './dto/enviar-email.dto';
 export class EnviarEmailService {
   private readonly logger = new Logger(EnviarEmailService.name);
 
-  constructor(private mailerService: MailerService) { }
+  constructor(private mailerService: MailerService) {}
 
   async enviarWithTemplate(enviarEmailDto: EnviarEmailDto): Promise<void> {
     try {

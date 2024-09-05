@@ -13,4 +13,4 @@ import { MailModule } from './core/mail/mail.module';
     MailModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}

@@ -36,4 +36,4 @@ import { EnviarEmailService } from './enviar-email.service';
   controllers: [EnviarEmailController],
   providers: [EnviarEmailService],
 })
-export class MailModule { }
+export class MailModule {}
