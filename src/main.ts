@@ -11,17 +11,15 @@ import { ResponseTransformInterceptor } from './shared/interceptors/response-tra
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.setGlobalPrefix('api/v1');
+  app.setGlobalPrefix('api/v1/enviar-email');
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       transform: true,
     }),
   );
-
   app.useGlobalInterceptors(new ResponseTransformInterceptor());
   app.useGlobalFilters(new ResponseExceptionsFilter());
-
   app.enableCors();
 
   app.connectMicroservice<MicroserviceOptions>(

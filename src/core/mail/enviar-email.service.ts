@@ -16,17 +16,19 @@ export class EnviarEmailService {
         `enviar-email: ${enviarEmailDto.template} - ${enviarEmailDto.to}`,
       );
 
-      const attachments: Mail.Attachment[] = [];
+      if (enviarEmailDto.attachments) {
+        const attachments: Mail.Attachment[] = [];
 
-      enviarEmailDto.attachments.forEach((item: IEmailAttachment) => {
-        attachments.push({
-          filename: item.filename,
-          content: item.base64,
-          encoding: 'base64',
+        enviarEmailDto.attachments.forEach((item: IEmailAttachment) => {
+          attachments.push({
+            filename: item.filename,
+            content: item.base64,
+            encoding: 'base64',
+          });
         });
-      });
 
-      enviarEmailDto.attachments = attachments;
+        enviarEmailDto.attachments = attachments;
+      }
 
       await this.mailerService.sendMail(enviarEmailDto);
 

@@ -10,7 +10,7 @@ import { ChannelRef } from 'src/shared/types/rabbitmq.type';
 import { EnviarEmailDto } from './dto/enviar-email.dto';
 import { EnviarEmailService } from './enviar-email.service';
 
-@Controller('enviar-email')
+@Controller('')
 export class EnviarEmailController {
   private readonly logger = new Logger(EnviarEmailController.name);
 
@@ -26,7 +26,7 @@ export class EnviarEmailController {
 
     try {
       this.logger.log(
-        `receive menssage 'enviar-email': ${data.template} - ${data.to}`,
+        `receive message 'enviar-email': ${data.template} - ${data.to}`,
       );
 
       await this.enviarEmailService.enviarWithTemplate(data);
