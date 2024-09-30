@@ -57,6 +57,7 @@ describe('EnviarEmailController', () => {
         subject: '',
         template: 'test',
         context: {},
+        attachments: [],
       };
 
       await controller.enviarEmail(data, context);
@@ -76,6 +77,7 @@ describe('EnviarEmailController', () => {
           subject: '',
           template: 'test',
           context: {},
+          attachments: [],
         };
 
         await controller.enviarEmail(data, context);

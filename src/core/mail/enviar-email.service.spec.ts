@@ -42,6 +42,7 @@ describe('EnviarEmailService', () => {
         subject: 'Recuperação de Senha',
         template: 'recuperacao-senha',
         context: {},
+        attachments: [],
       };
 
       emailService.enviarWithTemplate(enviarEmailDto);
@@ -61,6 +62,7 @@ describe('EnviarEmailService', () => {
         subject: 'Recuperação de Senha',
         template: 'recuperacao-senha',
         context: {},
+        attachments: [],
       };
 
       try {

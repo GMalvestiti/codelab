@@ -6,7 +6,7 @@ import {
   RmqContext,
   Transport,
 } from '@nestjs/microservices';
-import { ChannelRef } from 'src/shared/types/rabbitmq.type';
+import { ChannelRef } from '../../shared/types/rabbitmq.type';
 import { EnviarEmailDto } from './dto/enviar-email.dto';
 import { EnviarEmailService } from './enviar-email.service';
 

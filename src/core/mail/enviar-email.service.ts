@@ -1,7 +1,7 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable, Logger } from '@nestjs/common';
 import Mail from 'nodemailer/lib/mailer';
-import { IEmailAttachment } from 'src/shared/interfaces/email-attachment.interface';
+import { IEmailAttachment } from '../../shared/interfaces/email-attachment.interface';
 import { EnviarEmailDto } from './dto/enviar-email.dto';
 
 @Injectable()
