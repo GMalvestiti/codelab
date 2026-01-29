@@ -1,0 +1,30 @@
+docker network create codelab-net
+
+kong >>> gateway
+https://docs.konghq.com/gateway/latest/get-started/
+
+nome do container = hostname dele
+
+requisição kong >>> porta 3000
+
+grpc
+    MicroserviceOptions >>> server
+    GrpcOptions >>> client
+
+Observable lastValueFrom
+
+conta-receber.service.ts >>> aula 19 >>> grpc apipessoa >>> 09:30 >>> e dado histórico 14:35
+
+APIVenda
+    aula 19 >>> 45:40
+
+aula 19
+    ChannelRef type
+    redis cache
+    nestjs task schedule
+
+aula 20
+    kong consumer api
+    jwt https://docs.konghq.com/hub/kong-inc/jwt/
+    axios
+    migrations >>> https://orkhan.gitbook.io/typeorm/docs/migrations

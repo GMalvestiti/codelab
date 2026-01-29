@@ -1,0 +1,46 @@
+services:
+  rabbitmq:
+    build:
+      context: ./.docker/rabbitmq
+      dockerfile: Dockerfile
+    container_name: rabbitmq
+    volumes:
+      - .docker/rabbitmq/data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=codelab
+      - RABBITMQ_DEFAULT_PASS=c0D3&l4b
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - codelab-net
+
+  kong:
+    image: kong:3.3.1-alpine
+    container_name: kong
+    volumes:
+      - "./.docker/kong/kong.yml:/home/kong/kong.yml"
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/home/kong/kong.yml
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    ports:
+      - "3000:8000"
+      - "8001:8001"
+    networks:
+      - codelab-net
+
+  redis:
+    image: redis:7.0.9-alpine
+    container_name: redis
+    volumes:
+      - .docker/redis/data:/data
+    ports:
+      - 6379:6379
+    networks:
+      - codelab-net
+
+networks:
+  codelab-net:
+    name: codelab-net
+    external: true

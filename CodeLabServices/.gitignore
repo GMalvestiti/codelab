@@ -1,0 +1,5 @@
+# RqbbitMQ
+.docker/rabbitmq/data
+
+# Redis
+.docker/redis/data

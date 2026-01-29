@@ -1,0 +1,107 @@
+_format_version: '3.0'
+
+_transform: true
+
+services:
+  - name: usuario-service
+    url: http://api-usuario:3001/api/v1/usuario
+    routes:
+      - name: usuario-route
+        paths:
+          - /api/v1/usuario
+    plugins:
+      - name: jwt
+
+  - name: usuario-auth-service
+    url: http://api-usuario:3001/api/v1/usuario/auth/login
+    routes:
+      - name: auth-usuario-route
+        paths:
+          - /api/v1/usuario/auth/login
+
+  - name: usuario-recuperacao-senha-service
+    url: http://api-usuario:3001/api/v1/usuario/recuperacao-senha
+    routes:
+      - name: recuperacao-senha-usuario-route
+        paths:
+          - /api/v1/usuario/recuperacao-senha
+
+  - name: usuario-alterar-senha-service
+    url: http://api-usuario:3001/api/v1/usuario/alterar-senha
+    routes:
+      - name: alterar-senha-usuario-route
+        paths:
+          - /api/v1/usuario/alterar-senha
+
+  - name: email-service
+    url: http://api-email:3002/api/v1/email
+    routes:
+      - name: email-route
+        paths:
+          - /api/v1/email
+    plugins:
+      - name: jwt
+
+  - name: produto-service
+    url: http://api-produto:3003/api/v1/produto
+    routes:
+      - name: produto-route
+        paths:
+          - /api/v1/produto
+    plugins:
+      - name: jwt
+
+  - name: pessoa-service
+    url: http://api-pessoa:3004/api/v1/pessoa
+    routes:
+      - name: pessoa-route
+        paths:
+          - /api/v1/pessoa
+    plugins:
+      - name: jwt
+
+  - name: financeiro-service
+    url: http://api-financeiro:3005/api/v1/financeiro
+    routes:
+      - name: financeiro-route
+        paths:
+          - /api/v1/financeiro
+    plugins:
+      - name: jwt
+
+  - name: venda-service
+    url: http://api-venda:3006/api/v1/venda
+    routes:
+      - name: venda-route
+        paths:
+          - /api/v1/venda
+    plugins:
+      - name: jwt
+
+plugins:
+  - name: jwt
+    route: usuario-route
+    enabled: true
+    config:
+      key_claim_name: iss
+      claims_to_verify:
+        - exp
+  - name: cors
+    config:
+      origins:
+        - '*'
+      methods:
+        - GET
+        - POST
+        - PATCH
+        - PUT
+        - OPTIONS
+        - DELETE
+      credentials: true
+
+consumers:
+  - username: login_server_issuer
+
+jwt_secrets:
+  - consumer: login_server_issuer
+    secret: 'kpmzRFHJFfq0EpDZswBl4MdDn6F62LwD'
