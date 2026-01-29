@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  codelab-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:4200'
+    volumes:
+      - '.:/home/node/app'
+    entrypoint: sh ./.docker/entrypoint.sh
+    environment:
+      - NODE_ENV=development
+    networks:
+      - codelab-net
+
+networks:
+  codelab-net:
+    name: codelab-net
+    external: true

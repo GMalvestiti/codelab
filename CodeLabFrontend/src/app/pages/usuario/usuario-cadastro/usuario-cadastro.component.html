@@ -1,0 +1,35 @@
+<cl-page-layout [title]="'Cadastro de Usuário'">
+  <ng-container leftActions>
+    <cl-back-action></cl-back-action>
+  </ng-container>
+
+  <ng-container rightActions>
+    <cl-save-add-action (saveAddEmitter)="save(true)"></cl-save-add-action>
+    <cl-save-action (saveEmitter)="save()"></cl-save-action>
+  </ng-container>
+
+  <ng-container content>
+    <cl-form-fields-list
+      [form]="cadastroFormGroup"
+      [fields]="cadastroFields"
+      [disableWatch]="true"
+    ></cl-form-fields-list>
+
+    <div class="permissoes-container">
+      <h2 class="permissoes-container__title">Permissões</h2>
+
+      <form [formGroup]="cadastroFormGroup">
+        <ng-container
+          *ngFor="let permissaoForm of permissaoFormArrayControls"
+          formArrayName="permissao"
+        >
+          <form [formGroup]="permissaoForm">
+            <mat-checkbox formControlName="checked">
+              <span class="field-label">{{ permissaoForm.value.label }}</span>
+            </mat-checkbox>
+          </form>
+        </ng-container>
+      </form>
+    </div>
+  </ng-container>
+</cl-page-layout>

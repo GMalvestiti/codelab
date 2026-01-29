@@ -1,0 +1,27 @@
+MatTable >>> usuario-consulta.component.html
+MatTableDataSource
+
+angular services
+
+Subject >>> rxjs
+
+display: grid >>> form-fields-list.component.scss
+
+classes abstratas typescript
+override
+
+typescript get
+
+typescript Record
+
+angular constructor injector >>> base-cadastro.component.ts
+
+tarefa 00:14:52 1:46:00 (snack-bar)
+
+protected >>> para poder acessar e sobrescrever
+
+guards do angular
+
+aula 14:
+    enviroment
+    FormArray (permissões)

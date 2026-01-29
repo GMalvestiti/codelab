@@ -1,0 +1,24 @@
+<div class="recuperacao-page flex-row-all-center">
+  <div class="recuperacao-card">
+    <div class="recuperacao-container">
+      <h2>Recuperação de Senha</h2>
+
+      <form class="recuperacao-form">
+        <cl-form-field
+          [field]="senhaInput"
+          [form]="recuperarSenhaForm"
+          class="form-field"
+        ></cl-form-field>
+
+        <button
+          (click)="recuperarSenha($event)"
+          mat-flat-button
+          color="primary"
+          class="submit-btn"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

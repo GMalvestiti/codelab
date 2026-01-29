@@ -1,0 +1,47 @@
+<form class="form-field" [formGroup]="form">
+  <span
+    *ngIf="![typeCheckbox, typeSlide].includes(field.type)"
+    class="field-label"
+    >{{ label }}</span
+  >
+
+  <ng-container [ngSwitch]="field.type">
+    <mat-form-field *ngSwitchCase="typeInput">
+      <input
+        [type]="field.password ? 'password' : 'text'"
+        matInput
+        [placeholder]="field.placeholder"
+        [formControlName]="field.formControlName"
+      />
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="typeSelect">
+      <mat-select [formControlName]="field.formControlName">
+        <mat-option
+          *ngFor="let option of field.options | async"
+          [value]="option.value"
+        >
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngSwitchCase="typeCheckbox">
+      <mat-checkbox
+        [formControlName]="field.formControlName"
+        class="field-checkbox"
+        ><span class="field-label">{{ label }}</span></mat-checkbox
+      >
+    </ng-container>
+
+    <mat-slide-toggle
+      *ngSwitchCase="typeSlide"
+      [formControlName]="field.formControlName"
+      color="primary"
+    >
+      {{ label }}
+    </mat-slide-toggle>
+  </ng-container>
+
+  <mat-error>{{ error }}</mat-error>
+</form>

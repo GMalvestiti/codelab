@@ -1,0 +1,9 @@
+<div class="filters">
+  <ng-container *ngFor="let field of fields">
+    <cl-form-field
+      [field]="field"
+      [form]="form"
+      [class]="field.class"
+    ></cl-form-field>
+  </ng-container>
+</div>

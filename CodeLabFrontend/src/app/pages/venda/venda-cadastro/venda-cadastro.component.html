@@ -1,0 +1,85 @@
+<cl-page-layout [title]="'Cadastro de Venda'">
+  <ng-container leftActions>
+    <cl-back-action></cl-back-action>
+  </ng-container>
+
+  <ng-container rightActions>
+    <cl-save-add-action (saveAddEmitter)="save(true)"></cl-save-add-action>
+    <cl-save-action (saveEmitter)="save()"></cl-save-action>
+  </ng-container>
+
+  <ng-container content>
+    <cl-form-fields-list
+      [form]="cadastroFormGroup"
+      [fields]="cadastroFields"
+      [disableWatch]="true"
+    ></cl-form-fields-list>
+
+    <div class="items-container">
+      <header>
+        <h1>Itens</h1>
+        <div class="separator"></div>
+      </header>
+
+      <div class="items-container__form">
+        <cl-form-fields-list
+          [form]="vendaItemFormGroup"
+          [fields]="vendaItemFields"
+          [disableWatch]="true"
+        ></cl-form-fields-list>
+
+        <button mat-flat-button color="primary" (click)="adicionarItem()">
+          Adicionar
+        </button>
+      </div>
+
+      <table
+        mat-table
+        matSort
+        [dataSource]="dataSource"
+        (matSortChange)="applySort($event)"
+      >
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+          <td mat-cell *matCellDef="let row">{{ row.id | formatId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="idProduto">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Produto</th>
+          <td mat-cell *matCellDef="let row">{{ row.idProduto | formatId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantidade</th>
+          <td mat-cell *matCellDef="let row">{{ row.quantidade }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="precoVenda">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Preço de Venda
+          </th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.precoVenda | formatReal }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorTotal">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor Total</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.valorTotal | formatReal }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <cl-empty-row *matNoDataRow></cl-empty-row>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="applyPage($event)"
+      ></mat-paginator>
+    </div>
+  </ng-container>
+</cl-page-layout>

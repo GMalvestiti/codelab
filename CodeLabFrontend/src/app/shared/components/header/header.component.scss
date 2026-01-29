@@ -1,0 +1,25 @@
+header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  background-color: var(--color-gray-50);
+  padding: 0 1rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem #0000002b;
+  border-bottom: 0.1px solid #0000003d;
+
+  .logo {
+    width: 2rem;
+  }
+
+  .logout {
+    cursor: pointer;
+    transition: 0.2s all ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<cl-page-layout [title]="'Consulta de Pessoa'">
+  <ng-container leftActions>
+    <cl-back-action></cl-back-action>
+    <cl-add-action></cl-add-action>
+  </ng-container>
+
+  <ng-container content>
+    <cl-form-fields-list
+      [form]="filterFormGroup"
+      [fields]="filterFields"
+      (changeEmitter)="search()"
+    ></cl-form-fields-list>
+
+    <cl-progress-loading [loading]="loading"></cl-progress-loading>
+
+    <table
+      mat-table
+      matSort
+      [dataSource]="dataSource"
+      (matSortChange)="applySort($event)"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+        <td mat-cell *matCellDef="let row">{{ row.id | formatId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+        <td mat-cell *matCellDef="let row">{{ row.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Documento</th>
+        <td mat-cell *matCellDef="let row">{{ row.documento }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cep">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>CEP</th>
+        <td mat-cell *matCellDef="let row">{{ row.cep }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="endereco">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Endereço</th>
+        <td mat-cell *matCellDef="let row">{{ row.endereco }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</th>
+        <td mat-cell *matCellDef="let row">{{ row.telefone }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let row" class="consulta-actions-container">
+          <mat-icon
+            class="consulta-edit-icon"
+            aria-label="Editar"
+            fontIcon="edit"
+            (click)="editar(row.id)"
+            width="18"
+            height="18"
+          ></mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (dblclick)="editar(row.id)"
+      ></tr>
+
+      <cl-empty-row *matNoDataRow></cl-empty-row>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="applyPage($event)"
+    ></mat-paginator>
+  </ng-container>
+</cl-page-layout>
