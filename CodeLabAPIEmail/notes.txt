@@ -1,0 +1,9 @@
+nodemailer
+@MessagePattern('enviar-email', Transport.RMQ)
+
+@nestjs-modules/mailer
+rabbitmq
+
+docker networks
+
+testes unitários rabbitmq

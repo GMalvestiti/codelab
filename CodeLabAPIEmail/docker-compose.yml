@@ -1,0 +1,36 @@
+services:
+  api-email:
+    container_name: api-email
+    build:
+      context: .docker/node/
+      dockerfile: Dockerfile
+    entrypoint: .docker/node/entrypoint.sh
+    ports:
+      - '3002:3002'
+      - '7002:7002'
+    volumes:
+      - .:/home/node/app
+    networks:
+      - codelab-net
+
+  db-email:
+    container_name: db-email
+    build:
+      context: .docker/postgres/
+      dockerfile: Dockerfile
+    command: postgres -c log_statement=all -p 5002
+    volumes:
+      - ./.docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: api-email
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5002:5002'
+    networks:
+      - codelab-net
+
+networks:
+  codelab-net:
+    name: codelab-net
+    external: true
