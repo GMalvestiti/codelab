@@ -1,0 +1,28 @@
+Interceptor
+
+app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+
+Interceptor: recebe e transforma retorno
+Filter: Recebe retorno
+Middleware: Recebe requisição (entrada e retorno)
+
+getRepositoryToken (testes unitários)
+usuario.controller.spec.ts
+
+testes unitários filters
+
+parse-find-all-order.pipe.ts
+
+casting "as"
+
+nodemailer
+    https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+    https://www.nodemailer.com/usage/using-gmail/
+
+gRPC >>> APIUsuario e ApiEmail - Comunicação síncrona/dados grandes
+rabbitmq >>> APIUsuario e ApiEmail - Comunicação assíncrona
+
+rqm-client.service
+recuperacao-senha.module > RmqClientService provider
+imports x providers
+injection class x token
